@@ -1,0 +1,75 @@
+Container:
+  * Isolamento
+  * Portabilidade
+  * Normalização
+  * Escala
+  * Executa uma imagem
+  * Sua responsabilidade é só rodar a aplicação
+
+imagem
+ * Executa uma receita
+ * Quanto maior os pacotes maior o tamanho da imagem
+ 
+
+Maquina virtual
+  * Menos portatil
+
+
+Contexto sem Container
+ * Node
+  - Precisa da instalação do Node
+  - Dependências do Node/App
+  - Sem escala
+
+
+
+Aplicação 
+ - Utiliza o Node 
+   - pnpm install
+   - pnpm build
+   - node file.js pnpm start
+ - Utiliza 0 pnpm
+ - Tem env vars
+
+ Docker file
+  - Arquivo declarativo
+  - Parte de uma imagem base - Sempre usar a image base para cada runtime
+    Se roda com node 22, escolha a imagem com essa versao
+
+image:
+  - Geralmente até um giga, quanto maior mais vulneraribilidade
+
+docker ignore
+ - Ignora oque estiver dentro dele
+
+
+multi staging build 
+ - Conseguimos usar varios from no docker file
+
+ vulneraribilidade
+  USER NAO PODE SER ROOT
+   CVE - commom 
+   trivy - Trivy para encontrar vulnerabilidades (CVE) e configurações incorretas (IaC) em repositórios de código, artefatos binários, imagens de contêiner e clusters Kubernetes
+
+
+  distroless
+   - totalmente preparada para executar o meu binario
+   - ajuda na camada de segurança
+   - chain guard 
+   cve - devemos mitigar vulnerabilidades
+
+
+
+  CI / CD
+
+  CI - integração continua: 
+  - Conjunto de steps
+  - Lint da aplicação
+  - Depende do CD
+  - Testes - unitario, integração, contrato, stress, mutante 
+  - build - *
+  - build da imagem
+  - push da image
+
+  CD - Entrega continua
+    - Entrega em si(pull da image e o run)

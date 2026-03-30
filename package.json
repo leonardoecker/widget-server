@@ -4,15 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx watch --env-file .env src/infra/http/server.ts",
+    "dev": "tsx watch --env-file .env src/server.ts",
+    "build": "tsup src --format esm",
+    "start": "node dist/server.mjs",
     "test": "dotenv -e .env.test -- vitest run",
     "test:watch": "dotenv -e .env.test -- vitest",
     "db:generate": "drizzle-kit generate",
     "db:studio": "drizzle-kit studio",
     "db:migrate:test": "dotenv -e .env.test -- drizzle-kit migrate",
     "pretest": "npm run db:migrate:test",
-    "pretest:watch": "pnpm run db:migrate:test",
-    "build": "tsup-node"
+    "pretest:watch": "pnpm run db:migrate:test"
   },
   "author": "",
   "license": "ISC",
@@ -26,6 +27,7 @@
     "@fastify/swagger-ui": "^5.2.5",
     "csv-stringify": "^6.7.0",
     "dayjs": "^1.11.20",
+    "dotenv": "^17.3.1",
     "dotenv-cli": "^11.0.0",
     "drizzle-orm": "^0.45.1",
     "fastify": "^5.8.2",

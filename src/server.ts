@@ -5,13 +5,14 @@ import {
   serializerCompiler,
   validatorCompiler,
 } from "fastify-type-provider-zod";
-import { uploadImageRoute } from "./routes/upload-image";
+import { uploadImageRoute } from "./infra/http/routes/upload-image";
 import fastifySwaggerUi from "@fastify/swagger-ui";
 import fastifyMultipart from "@fastify/multipart";
 import fastifySwagger from "@fastify/swagger";
 import { transformSwaggerSchema } from "@/infra/http/transform-swagger-schema";
-import { getUploadsRoute } from "./routes/get-uploads";
-import { exportUploadsRoute } from "./routes/export-uploads";
+import { getUploadsRoute } from "./infra/http/routes/get-uploads";
+import { exportUploadsRoute } from "./infra/http/routes/export-uploads";
+import path from "node:path";
 
 const server = fastify();
 
