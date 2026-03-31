@@ -39,7 +39,7 @@ jobs:
           context: .
           push: true
           tags: |
-          ${{ steps.login-ecr.outputs.registry }}/${{ vars.ECR_REPOSITORY }}:${{ steps.generate-tag.outputs.sha }}
+            ${{ steps.login-ecr.outputs.registry }}/${{ vars.ECR_REPOSITORY }}:${{ steps.generate-tag.outputs.sha }}
 
     #  - name: Build and push the image to AWS ECR
     #    id: build-push-image
@@ -49,6 +49,7 @@ jobs:
     #      IMAGE_TAG: ${{ steps.generate-tag.outputs.sha}}
     #    run: |
     #      docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+
 #
-    #      docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+#      docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 #
