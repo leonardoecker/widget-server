@@ -1,0 +1,41 @@
+services:
+  postgres-widget-server:
+    image: postgres:alpine
+    ports:
+      - 5433:5433
+    environment:
+      - POSTGRES_USER=$POSTGRES_USER
+      - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+      - POSTGRES_DB=$POSTGRES_DB
+    volumes:
+      - db:/var/lib/postgresql/data
+    networks:
+      - widget
+      - db
+
+  widget-server:
+    container_name: widget-server
+    depends_on:
+      - postgres-widget-server
+    build: .
+    ports:
+      - "3333:3333"
+    environment:
+      - PORT=3333
+      - NODE_ENV=development
+      - DATABASE_URL=$DATABASE_URL
+      - CLOUDFLARE_ACCOUNT_ID=$CLOUDFLARE_ACCOUNT_ID
+      - CLOUDFLARE_ACCESS_KEY_ID=$CLOUDFLARE_ACCESS_KEY_ID
+      - CLOUDFLARE_SECRET_ACCESS_KEY=$CLOUDFLARE_SECRET_ACCESS_KEY
+      - CLOUDFLARE_BUCKET=$CLOUDFLARE_BUCKET
+      - CLOUDFLARE_PUBLIC_URL=$CLOUDFLARE_PUBLIC_URL
+    networks:
+      - widget
+
+volumes:
+  db:
+networks:
+  widget:
+    driver: bridge
+  db:
+    driver: bridge
