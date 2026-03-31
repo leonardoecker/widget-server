@@ -31,6 +31,10 @@ jobs:
         run: |
           pnpm install
 
+      - name: Run unit tests
+          id: run-tests
+          run: pnpm test
+
       - name: Configure AWS credentials
         id: configure-aws-credentials
         uses: aws-actions/configure-aws-credentials@v4
