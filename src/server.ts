@@ -13,6 +13,7 @@ import { transformSwaggerSchema } from "@/infra/http/transform-swagger-schema";
 import { getUploadsRoute } from "./infra/http/routes/get-uploads";
 import { exportUploadsRoute } from "./infra/http/routes/export-uploads";
 import path from "node:path";
+import { healthCheckRoute } from "./infra/http/routes/health-check";
 
 const server = fastify();
 
@@ -52,6 +53,7 @@ server.register(fastifySwaggerUi, {
 server.register(uploadImageRoute);
 server.register(getUploadsRoute);
 server.register(exportUploadsRoute);
+server.register(healthCheckRoute);
 
 server.listen({ port: 3333, host: "0.0.0.0" }).then(() => {
   console.log("HTTP Server running!");

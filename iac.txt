@@ -1,0 +1,21 @@
+Iac - Infra as Code
+Principio basico - Nenhuma criação será feito direto pela cloud
+
+Ganhos
+  - Centralização
+  - Sempre declarativo
+  - Controle melhor de custos e governança
+
+Ferramentas
+  - Terraform - Funciona em todas as clouds, agnostica
+  - CDK do seu cloud provider- Vai te gerar lockin
+  - Pulumi - Funciona em todas as clouds, agnostica
+  - AppRunner - Um serviço simples para executar container
+
+ECS 
+  VPC 
+  Subnet
+  route table
+  internet e NAT gateway
+  LoadBalancer
+  Container efemuro - Tudo oque for persistido nele sera perdido ao remove-lo
