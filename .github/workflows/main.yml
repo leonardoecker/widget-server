@@ -95,8 +95,8 @@ jobs:
         uses: aws-actions/amazon-ecs-deploy-task-definition@v2
         with:
           task-definition: ${{ steps.render-task-definition.outputs.task-definition }}
-          service-name: widget-server-service
-          cluster: wdget
+          service-name: ${{ vars.ECS_SERVICE_NAME }}
+          cluster: ${{ vars.CLUSTER_NAME }}
       # - name: Deploy to App Runner
       #   id: deploy-app-runner
       #   uses: awslabs/amazon-app-runner-deploy@main
