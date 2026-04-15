@@ -97,6 +97,8 @@ jobs:
           task-definition: ${{ steps.render-task-definition.outputs.task-definition }}
           service-name: ${{ vars.ECS_SERVICE_NAME }}
           cluster: ${{ vars.CLUSTER_NAME }}
+          wait-for-service-stability: true
+
       # - name: Deploy to App Runner
       #   id: deploy-app-runner
       #   uses: awslabs/amazon-app-runner-deploy@main
