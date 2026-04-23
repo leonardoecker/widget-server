@@ -94,7 +94,7 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
           tags: |
-            ${{steps.login-ecr.outputs.registry}}/${{ vars.ECR_REPOSITORY }}: ${{ steps.generate-tag.outputs.sha}}
+            ${{steps.login-ecr.outputs.registry}}/${{ vars.ECR_REPOSITORY }}:${{ steps.generate-tag.outputs.sha}}
 
       - name: Run Trivy scanner
         id: run-trivy-scanner
