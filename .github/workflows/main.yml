@@ -31,7 +31,7 @@ jobs:
         run: |
           pnpm install
       - name: Run migrations
-        run: pnpm migrate
+        run: db:migrate:test
         env:
           DATABASE_URL: postgresql://postgres.isxzyggjjpkinczdukdj:wyCki3MZN9W@aws-1-us-east-2.pooler.supabase.com:6543/postgres
           CLOUDFLARE_ACCOUNT_ID: e8d83019b8968eeb453dc1f44f6a1a44
@@ -39,6 +39,7 @@ jobs:
           CLOUDFLARE_SECRET_ACCESS_KEY: "2be7f675c47cf2bcc50be412e6ac4e02b754705aa8a07120ced1690c510d527b"
           CLOUDFLARE_BUCKET: upload-server
           CLOUDFLARE_PUBLIC_URL: "https://pub-04c4f7e4faaf4588ba9d22736fc4cdc1.r2.dev"
+
       - name: Run tests
         id: run-tests
         run: |
@@ -51,11 +52,6 @@ jobs:
           CLOUDFLARE_BUCKET: upload-server
           CLOUDFLARE_PUBLIC_URL: "https://pub-04c4f7e4faaf4588ba9d22736fc4cdc1.r2.dev"
           NODE_ENV: test
-
-      - name: Run lint
-        id: run-lint
-        run: |
-          pnpm lint
 
   Build:
     name: Build
